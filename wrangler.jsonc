@@ -18,23 +18,70 @@
 	"name": "outlook-mcp",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-04-28",
-	"compatibility_flags": ["nodejs_compat"],
-	"observability": { "enabled": true },
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"observability": {
+		"enabled": true
+	},
 	"kv_namespaces": [
-		{ "binding": "OAUTH_KV", "id": "4994370056d545869e91491b115753fc" }
+		{
+			"binding": "OAUTH_KV",
+			"id": "a5abebb033fb4e2e90a1b4d6e6623b88"
+		}
 	],
 	"vars": {
-		"MICROSOFT_CLIENT_ID": "d36110b9-d68d-4e3c-b611-e31aaae38f94",
-		"MICROSOFT_TENANT_ID": "5fa1667c-fd27-4b4d-8a8a-bf5e9e38c626",
-		"WORKER_URL": "https://outlook-mcp.bashar-basheer.workers.dev"
+		"MICROSOFT_CLIENT_ID": "ca14ed28-7307-410c-ac05-7e6bd3f4d140",
+		"MICROSOFT_TENANT_ID": "e4e3a7b7-c7e9-4b6c-9d7d-ac83abf93134",
+		"WORKER_URL": "https://outlook-mcp.namemaro0411.workers.dev"
 	},
 	"unsafe": {
 		"bindings": [
-			{ "name": "RATE_LIMIT_APPROVE",     "type": "ratelimit", "namespace_id": "3001", "simple": { "limit": 5,  "period": 60 } },
-			{ "name": "RATE_LIMIT_TOKEN",       "type": "ratelimit", "namespace_id": "3002", "simple": { "limit": 10, "period": 60 } },
-			{ "name": "RATE_LIMIT_REGISTER",    "type": "ratelimit", "namespace_id": "3003", "simple": { "limit": 10, "period": 60 } },
-			{ "name": "RATE_LIMIT_MCP",         "type": "ratelimit", "namespace_id": "3004", "simple": { "limit": 60, "period": 60 } },
-			{ "name": "RATE_LIMIT_OAUTH_START", "type": "ratelimit", "namespace_id": "3005", "simple": { "limit": 5,  "period": 60 } }
+			{
+				"name": "RATE_LIMIT_APPROVE",
+				"type": "ratelimit",
+				"namespace_id": "3001",
+				"simple": {
+					"limit": 5,
+					"period": 60
+				}
+			},
+			{
+				"name": "RATE_LIMIT_TOKEN",
+				"type": "ratelimit",
+				"namespace_id": "3002",
+				"simple": {
+					"limit": 10,
+					"period": 60
+				}
+			},
+			{
+				"name": "RATE_LIMIT_REGISTER",
+				"type": "ratelimit",
+				"namespace_id": "3003",
+				"simple": {
+					"limit": 10,
+					"period": 60
+				}
+			},
+			{
+				"name": "RATE_LIMIT_MCP",
+				"type": "ratelimit",
+				"namespace_id": "3004",
+				"simple": {
+					"limit": 60,
+					"period": 60
+				}
+			},
+			{
+				"name": "RATE_LIMIT_OAUTH_START",
+				"type": "ratelimit",
+				"namespace_id": "3005",
+				"simple": {
+					"limit": 5,
+					"period": 60
+				}
+			}
 		]
 	}
 }
