@@ -32,7 +32,7 @@
 	],
 	"vars": {
 		"MICROSOFT_CLIENT_ID": "ca14ed28-7307-410c-ac05-7e6bd3f4d140",
-		"MICROSOFT_TENANT_ID": "e4e3a7b7-c7e9-4b6c-9d7d-ac83abf93134",
+		"MICROSOFT_TENANT_ID": "consumers",
 		"WORKER_URL": "https://outlook-mcp.namemaro0411.workers.dev"
 	},
 	"unsafe": {
