@@ -90,6 +90,9 @@ const oauth = createOAuthServer<Env>({
 	allowedRedirectHosts: ALLOWED_REDIRECT_HOSTS,
 	// https for cloud clients (claude.ai); http for loopback (127.0.0.1) per RFC 8252.
 	allowedRedirectSchemes: new Set(["https:", "http:"]),
+	// Layer1 fix: extend bearer TTL from 30 days (toolkit default) to 365 days
+	// so Claude.ai connections survive without frequent re-approval.
+	accessTokenTtlSeconds: 365 * 24 * 60 * 60,
 	rateLimiters: {
 		approve: createRateLimit<Env>({
 			binding: (env) => env.RATE_LIMIT_APPROVE,
