@@ -26,6 +26,9 @@ export interface Env {
 	/** Publicly reachable HTTPS URL of the signature logo. */
 	SIGNATURE_LOGO_URL?: string;
 
+	/** Static bearer token for MCP Portal registration. Set via `wrangler secret put`. */
+	PORTAL_SECRET?: string;
+
 	RATE_LIMIT_APPROVE: CloudflareRateLimiter;
 	RATE_LIMIT_TOKEN: CloudflareRateLimiter;
 	RATE_LIMIT_REGISTER: CloudflareRateLimiter;

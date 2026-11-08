@@ -73,14 +73,27 @@ type AppContext = Context<{ Bindings: Env }>;
 const app = new Hono<{ Bindings: Env }>();
 
 app.use("*", createCors({ allowedOrigins: DEFAULT_CLAUDE_ORIGINS }));
-app.use(
-	"*",
-	createBearerMiddleware({
-		kv: (env) => (env as Env).OAUTH_KV,
-		publicPaths: PUBLIC_PATHS,
-		realm: SERVER_NAME,
-	}),
-);
+
+// Bearer auth: Portal static secret takes priority, then per-client KV tokens.
+const kvBearerMiddleware = createBearerMiddleware({
+	kv: (env) => (env as Env).OAUTH_KV,
+	publicPaths: PUBLIC_PATHS,
+	realm: SERVER_NAME,
+});
+app.use("*", async (c, next) => {
+	const url = new URL(c.req.url);
+	if (PUBLIC_PATHS.has(url.pathname)) return next();
+
+	const auth = c.req.header("Authorization") ?? "";
+	const raw = auth.startsWith("Bearer ") ? auth.slice(7).trim() : "";
+	const portalSecret = (c.env as Env).PORTAL_SECRET;
+	if (raw && portalSecret && (await timingSafeEqual(raw, portalSecret))) {
+		c.set("clientId", "portal");
+		return next();
+	}
+
+	return kvBearerMiddleware(c, next);
+});
 
 const oauth = createOAuthServer<Env>({
 	serverName: SERVER_NAME,
