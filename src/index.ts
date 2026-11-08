@@ -53,6 +53,9 @@ const ALLOWED_REDIRECT_HOSTS = new Set([
 	// Cloudflare-MCP-Hub (this user's own Worker) — proxies outlook-mcp behind
 	// a single "one dock, many services" MCP endpoint.
 	"mcp-hub.namemaro0411.workers.dev",
+	"mcp.kazuiidaaa.com",
+	// MCP Server Portal — Portal統一方針(2026-11-09)によりPortal経由接続を許可
+	"portal.kazuiidaaa.com",
 ]);
 
 // 15 MB MCP body cap — generous enough to accept tool calls with 10 MB of
